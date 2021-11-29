@@ -23,7 +23,7 @@ def before_func(uid):
     assistant, assistant_info, session_id = connect.assistant_connect('ef4292f2-8274-48d6-bee1-20b20f18a63c')
 
     # 화면 clear
-    os.system('cls')
+    # os.system('cls')  # 윈도우 전용
 
     # 첫번째 질문 수행하기(Greeting)
     conversation = Conversation(QA_list_Before.before_slot_list)
