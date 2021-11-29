@@ -1,0 +1,11 @@
+Date:2020-11-11 16:36:10
+Position:['다리', '허리']
+Quality:['저림']
+R_factor1:['새벽', '아침']
+R_factor2:['서있을 때']
+Severity:1
+Timing2:1주
+Mood:보통
+Anxiety:없음
+Sleep1:7
+Sleep2:좋음

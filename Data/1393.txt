@@ -1,0 +1,11 @@
+Date:2021-07-23 16:32:28
+Position:['머리']
+Quality:['뻐근함']
+R_factor1:['오후']
+R_factor2:['앉을 때']
+Severity:5
+Timing2:2주
+Mood:나쁨
+Anxiety:없음
+Sleep1:6
+Sleep2:좋음

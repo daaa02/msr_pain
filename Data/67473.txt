@@ -1,0 +1,11 @@
+Date:2020-11-10 17:48:42
+Position:['등']
+Quality:['욱신거림']
+R_factor1:['아침']
+R_factor2:['앉을 때']
+Severity:6
+Timing2:2일
+Mood:나쁨
+Anxiety:있음
+Sleep1:4
+Sleep2:나쁨
