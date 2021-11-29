@@ -1,0 +1,8 @@
+# 윈도우
+
+C:\Users\User\google-cloud-sdk\bin\gcloud auth activate-service-account --key-file="C:\Users\User\Downloads\msr-stt-bb659e82adfe.json"
+set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\User\Downloads\msr-stt-bb659e82adfe.json"
+
+# 리눅스
+
+export GOOGLE_APPLICATION_CREDENTIALS=/home/pi/msr_pain/msr-stt-bb659e82adfe.json
