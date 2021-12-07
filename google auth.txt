@@ -5,4 +5,5 @@ set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\User\Downloads\msr-stt-bb659e82adfe
 
 # 리눅스
 
-export GOOGLE_APPLICATION_CREDENTIALS=/home/pi/msr_pain/msr-stt-bb659e82adfe.json
+#export GOOGLE_APPLICATION_CREDENTIALS=/home/pi/msr_pain/msr-stt-bb659e82adfe.json
+export GOOGLE_APPLICATION_CREDENTIALS=/home/pi/msr_pain/stt-dayoung-1-dd55fe019d82.json
