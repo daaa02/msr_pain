@@ -2,13 +2,13 @@ def before_func(uid):
     import os
     import random
     import time
+    import csv
     from connect import Connection
     from QLearning.qtable_before import qtable_out
     from NLP import NLP, Dictionary
     from QA_list_Before import QA_list_Before
     from QLearning.QL_algorithm_before import Conversation
     from transcribe_streaming_mic import speech_to_text
-    from transcribe_streaming_infinite import tts
 
     # init variables
     slot = {}
@@ -25,6 +25,11 @@ def before_func(uid):
     # 화면 clear
     # os.system('cls')  # 윈도우 전용
 
+    # csv 저장 관련
+    folder = "Data/"
+    csv_file = open(f'{folder}/{uid}_turn.csv', 'a', newline='')
+    cw = csv.writer(csv_file)
+
     # 첫번째 질문 수행하기(Greeting)
     conversation = Conversation(QA_list_Before.before_slot_list)
     conversation.state_Q_list(Q)
@@ -33,6 +38,7 @@ def before_func(uid):
     print(conversation.action, conversation.action_idx)
     print(conversation.user_state)
     print(out + '\n')  # 질문 출력
+    cw.writerow(['msr', out])
     connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
     # 두번째 질문 수행하기(Position)
@@ -41,14 +47,16 @@ def before_func(uid):
     print(conversation.action, conversation.action_idx)
     print(conversation.user_state)
     print(out + '\n')  # 질문 출력
+    cw.writerow(['msr', out])
     # print('\n')
     connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
     while conversation.user_state.tolist() != conversation.state_Q[len(conversation.state_Q) - 1][0]:
         if conversation.action == 'Position':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
 
             pain_point = nlp.nlp_position(user_in, dic)
             print("pain_point = {}".format(pain_point))
@@ -63,6 +71,7 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
@@ -70,12 +79,14 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Quality':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
 
             response = assistant.message(
                 assistant_id=assistant_info['assistant_id'],
@@ -101,6 +112,7 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
@@ -108,12 +120,14 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'R_factor1':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
             # user_in = "오후에 아파요"  # 예시로 적어놓음(21.07.02 추가)
 
             response = assistant.message(
@@ -169,13 +183,15 @@ def before_func(uid):
             print(conversation.action, conversation.action_idx)
             print(conversation.user_state)
             print(out + '\n')  # 질문 출력
+            cw.writerow(['msr', out])
             connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         #
         if conversation.action == 'R_factor2':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
             # user_in = "물건 들 때 아파요"  # 예시로 적어놓음(21.07.02 추가)
 
             response = assistant.message(
@@ -207,6 +223,7 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
@@ -214,12 +231,14 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Severity':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
             # user_in = "5점 정도"  # 예시로 적어놓음(21.07.02 추가)
 
             # tmp = nlp.nlp_severity(user_in=user_in, dic=dic)
@@ -238,6 +257,7 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
@@ -245,12 +265,14 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Timing2':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
             # user_in = "어제부터 그런 거 같아요"  # 예시로 적어놓음(21.07.02 추가)
 
             response = assistant.message(
@@ -297,6 +319,7 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
@@ -304,12 +327,14 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Bedtime':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
 
             bedtime = nlp.nlp_sleep_time(user_in=user_in, dic=dic)
             print("bedtime = {}".format(bedtime) + '\n')
@@ -323,18 +348,21 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
             else:
                 out = "잘 못들었습니다. " + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Asleep':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
 
             response = assistant.message(
                 assistant_id=assistant_info['assistant_id'],
@@ -361,18 +389,21 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
             else:
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Disorder':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
 
             response = assistant.message(
                 assistant_id=assistant_info['assistant_id'],
@@ -403,18 +434,21 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
             else:
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Sleep1':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
 
             sleep_time = nlp.nlp_sleep_time(user_in=user_in, dic=dic)
             print("sleep_time = {}".format(sleep_time) + '\n')
@@ -427,6 +461,7 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
@@ -434,12 +469,14 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Sleep2':
             start = time.time()
-            # user_in = speech_to_text()  # 완료 시 엔터 입력!
-            user_in = input()
+            user_in = speech_to_text()  # 완료 시 엔터 입력!
+            # user_in = input()
+            cw.writerow(['user', user_in])
             # user_in = "몇 번 깼어요"    # 예시로 적어놓음(21.07.02 추가)
 
             answer = nlp.nlp_sleep_answer(user_in=user_in, dic=dic)
@@ -473,12 +510,14 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
             else:
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Bye':
