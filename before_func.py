@@ -1,4 +1,4 @@
-def before_func(uid): 
+def before_func(uid):
     import os
     import random
     import time
@@ -29,6 +29,8 @@ def before_func(uid):
     folder = "Data/"
     csv_file = open(f'{folder}/{uid}_turn.csv', 'a', newline='')
     cw = csv.writer(csv_file)
+
+    rej = []
 
     # 첫번째 질문 수행하기(Greeting)
     conversation = Conversation(QA_list_Before.before_slot_list)
@@ -75,6 +77,7 @@ def before_func(uid):
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
@@ -116,6 +119,7 @@ def before_func(uid):
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
@@ -128,8 +132,7 @@ def before_func(uid):
             user_in = speech_to_text()  # 완료 시 엔터 입력!
             # user_in = input()
             cw.writerow(['user', user_in])
-            # user_in = "오후에 아파요"  # 예시로 적어놓음(21.07.02 추가)
-
+            
             response = assistant.message(
                 assistant_id=assistant_info['assistant_id'],
                 session_id=session_id,
@@ -178,6 +181,7 @@ def before_func(uid):
                 out = random.choice(QA_list_Before.before_question_list[conversation.action])
 
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
 
             print(conversation.action, conversation.action_idx)
@@ -185,14 +189,12 @@ def before_func(uid):
             print(out + '\n')  # 질문 출력
             cw.writerow(['msr', out])
             connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
-
-        #
+        
         if conversation.action == 'R_factor2':
             start = time.time()
             user_in = speech_to_text()  # 완료 시 엔터 입력!
             # user_in = input()
             cw.writerow(['user', user_in])
-            # user_in = "물건 들 때 아파요"  # 예시로 적어놓음(21.07.02 추가)
 
             response = assistant.message(
                 assistant_id=assistant_info['assistant_id'],
@@ -227,6 +229,7 @@ def before_func(uid):
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
@@ -239,7 +242,6 @@ def before_func(uid):
             user_in = speech_to_text()  # 완료 시 엔터 입력!
             # user_in = input()
             cw.writerow(['user', user_in])
-            # user_in = "5점 정도"  # 예시로 적어놓음(21.07.02 추가)
 
             # tmp = nlp.nlp_severity(user_in=user_in, dic=dic)
             severity = nlp.nlp_severity(user_in=user_in, dic=dic)
@@ -261,6 +263,7 @@ def before_func(uid):
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
@@ -273,7 +276,6 @@ def before_func(uid):
             user_in = speech_to_text()  # 완료 시 엔터 입력!
             # user_in = input()
             cw.writerow(['user', user_in])
-            # user_in = "어제부터 그런 거 같아요"  # 예시로 적어놓음(21.07.02 추가)
 
             response = assistant.message(
                 assistant_id=assistant_info['assistant_id'],
@@ -323,6 +325,7 @@ def before_func(uid):
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
@@ -350,7 +353,9 @@ def before_func(uid):
                 print(out + '\n')  # 질문 출력
                 cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다. " + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
@@ -391,7 +396,9 @@ def before_func(uid):
                 print(out + '\n')  # 질문 출력
                 cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
@@ -436,7 +443,9 @@ def before_func(uid):
                 print(out + '\n')  # 질문 출력
                 cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
@@ -465,6 +474,7 @@ def before_func(uid):
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
@@ -477,8 +487,7 @@ def before_func(uid):
             user_in = speech_to_text()  # 완료 시 엔터 입력!
             # user_in = input()
             cw.writerow(['user', user_in])
-            # user_in = "몇 번 깼어요"    # 예시로 적어놓음(21.07.02 추가)
-
+            
             answer = nlp.nlp_sleep_answer(user_in=user_in, dic=dic)
             if answer != '':
                 sleep_answer = answer
@@ -512,7 +521,9 @@ def before_func(uid):
                 print(out + '\n')  # 질문 출력
                 cw.writerow(['msr', out])
                 connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+
             else:
+                rej.append("rejection")
                 out = "잘 못들었습니다." + random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
@@ -525,3 +536,6 @@ def before_func(uid):
             connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=result)
             print(result)
             conversation.save_text(slot, uid)
+            rej_num = len(rej)
+            cw.writerow(['rejection', rej_num])
+
