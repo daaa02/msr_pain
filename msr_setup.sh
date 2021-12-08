@@ -10,6 +10,7 @@ pip3 install pandas
 sudo apt-get install portaudio19-dev
 pip3 install pyaudio
 pip3 install pygame
+pip3 install tweepy==3.10.0
 pip3 install konlpy
 pip3 install tweepy
 pip3 install google-cloud-speech
