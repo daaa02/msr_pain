@@ -21,9 +21,16 @@ def before_func(uid):
 
     # connect
     assistant, assistant_info, session_id = connect.assistant_connect('ef4292f2-8274-48d6-bee1-20b20f18a63c')
-
-    # 화면 clear
-    # os.system('cls')  # 윈도우 전용
+    
+    # Kakao tts api
+    def tts(speech_text):
+        file = "tts.wav"
+        connect.tts(f"<speak>\
+                    <voice name='WOMAN_READ_CALM'><prosody rate='slow'>{speech_text}<break time='500ms'/></prosody></voice>\
+                    </speak>", file)
+        connect.play(file, 'local', '-1000', False)
+        print("\n")
+        # print(speech_text)
 
     # csv 저장 관련
     folder = "Data/"
@@ -40,8 +47,9 @@ def before_func(uid):
     print(conversation.action, conversation.action_idx)
     print(conversation.user_state)
     print(out + '\n')  # 질문 출력
+    tts(out)
     cw.writerow(['msr', out])
-    connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+    # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
     # 두번째 질문 수행하기(Position)
     conversation.update()
