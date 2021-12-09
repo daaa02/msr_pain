@@ -1,9 +1,0 @@
-Position:['목', '어깨']
-Quality:['욱신거림', '묵직함']
-R_factor1:['밤']
-Severity:3
-Timing2:2주
-Mood:좋음
-Anxiety:없음
-Sleep1:5
-Sleep2:좋음
