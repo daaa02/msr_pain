@@ -26,7 +26,7 @@ def before_func(uid):
     def tts(speech_text):
         file = "tts.wav"
         connect.tts(f"<speak>\
-                    <voice name='WOMAN_READ_CALM'><prosody rate='slow'>{speech_text}<break time='500ms'/></prosody></voice>\
+                    <voice name='WOMAN_READ_CALM'><prosody rate='medium'>{speech_text}<break time='500ms'/></prosody></voice>\
                     </speak>", file)
         connect.play(file, 'local', '-1000', False)
         print("\n")
