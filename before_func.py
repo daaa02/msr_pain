@@ -564,7 +564,8 @@ def before_func(uid):
 
         if conversation.action == 'Bye':
             result = QA_list_Before.before_final_output(slot)
-            connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=result)
+            tts(result)
+            # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=result)
             print(result)
             conversation.save_text(slot, uid)
             rej_num = len(rej)
