@@ -21,7 +21,7 @@ def before_func(uid):
 
     # connect
     assistant, assistant_info, session_id = connect.assistant_connect('ef4292f2-8274-48d6-bee1-20b20f18a63c')
-    
+
     # Kakao tts api
     def tts(speech_text):
         file = "tts.wav"
@@ -48,8 +48,9 @@ def before_func(uid):
     print(conversation.user_state)
     print(out + '\n')  # 질문 출력
     tts(out)
+
     cw.writerow(['msr', out])
-    # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+#     # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
     # 두번째 질문 수행하기(Position)
     conversation.update()
@@ -57,9 +58,10 @@ def before_func(uid):
     print(conversation.action, conversation.action_idx)
     print(conversation.user_state)
     print(out + '\n')  # 질문 출력
+    tts(out)
     cw.writerow(['msr', out])
     # print('\n')
-    connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+    # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
     while conversation.user_state.tolist() != conversation.state_Q[len(conversation.state_Q) - 1][0]:
         if conversation.action == 'Position':
@@ -81,8 +83,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
                 rej.append("rejection")
@@ -90,8 +93,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Quality':
             start = time.time()
@@ -123,8 +127,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
                 rej.append("rejection")
@@ -132,15 +137,16 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'R_factor1':
             start = time.time()
             user_in = speech_to_text()  # 완료 시 엔터 입력!
             # user_in = input()
             cw.writerow(['user', user_in])
-            
+
             response = assistant.message(
                 assistant_id=assistant_info['assistant_id'],
                 session_id=session_id,
@@ -195,9 +201,10 @@ def before_func(uid):
             print(conversation.action, conversation.action_idx)
             print(conversation.user_state)
             print(out + '\n')  # 질문 출력
+            tts(out)
             cw.writerow(['msr', out])
-            connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
-        
+            # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+
         if conversation.action == 'R_factor2':
             start = time.time()
             user_in = speech_to_text()  # 완료 시 엔터 입력!
@@ -233,8 +240,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
                 rej.append("rejection")
@@ -242,8 +250,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Severity':
             start = time.time()
@@ -267,8 +276,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
                 rej.append("rejection")
@@ -276,8 +286,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Timing2':
             start = time.time()
@@ -329,8 +340,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
                 rej.append("rejection")
@@ -338,8 +350,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Bedtime':
             start = time.time()
@@ -359,8 +372,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
                 rej.append("rejection")
@@ -368,8 +382,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Asleep':
             start = time.time()
@@ -402,8 +417,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
                 rej.append("rejection")
@@ -411,8 +427,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Disorder':
             start = time.time()
@@ -449,8 +466,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
                 rej.append("rejection")
@@ -458,8 +476,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Sleep1':
             start = time.time()
@@ -478,8 +497,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
                 rej.append("rejection")
@@ -487,15 +507,16 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Sleep2':
             start = time.time()
             user_in = speech_to_text()  # 완료 시 엔터 입력!
             # user_in = input()
             cw.writerow(['user', user_in])
-            
+
             answer = nlp.nlp_sleep_answer(user_in=user_in, dic=dic)
             if answer != '':
                 sleep_answer = answer
@@ -527,8 +548,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
             else:
                 rej.append("rejection")
@@ -536,8 +558,9 @@ def before_func(uid):
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
+                tts(out)
                 cw.writerow(['msr', out])
-                connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+                # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
         if conversation.action == 'Bye':
             result = QA_list_Before.before_final_output(slot)
@@ -546,4 +569,3 @@ def before_func(uid):
             conversation.save_text(slot, uid)
             rej_num = len(rej)
             cw.writerow(['rejection', rej_num])
-
