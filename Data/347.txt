@@ -1,0 +1,11 @@
+Date:2021-12-08 15:51:09
+Position:['머리']
+Quality:['저림']
+R_factor2:['자세와 상관없이']
+Severity:['2']
+Timing2:1일
+Bedtime:2
+Asleep:50분
+Disorder:자주 있음
+Sleep1:4
+Sleep2:나쁨
