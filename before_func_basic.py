@@ -36,7 +36,7 @@ def before_func(uid):
 
     # csv 저장 관련
     folder = "Data/"
-    csv_file = open(f'{folder}/{uid}_turn.csv', 'a', newline='')
+    csv_file = open(f'{folder}/{uid}_basic.csv', 'a', newline='')
     cw = csv.writer(csv_file)
 
     rej = []
@@ -564,4 +564,6 @@ def before_func(uid):
             conversation.save_text(slot, uid)
             rej_num = len(rej)
             cw.writerow(['msr', result])
-            cw.writerow(['rejection', rej_num])
+            cw.writerow(['Turns', ])
+            cw.writerow(['Rejection', rej_num])
+            cw.writerow(['Misrecognitions', ])
