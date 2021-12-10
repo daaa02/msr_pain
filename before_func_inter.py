@@ -28,7 +28,7 @@ def before_func(uid):
     def tts(speech_text):
         file = "tts.wav"
         connect.tts(f"<speak>\
-                    <voice name='WOMAN_READ_CALM'><prosody rate='medium'>{speech_text}<break time='500ms'/></prosody></voice>\
+                    <voice name='WOMAN_READ_CALM'><prosody rate='slow'>{speech_text}<break time='500ms'/></prosody></voice>\
                     </speak>", file)
         connect.play(file, 'local', '0', False)
         print("\n")
@@ -36,7 +36,7 @@ def before_func(uid):
 
     # csv 저장 관련
     folder = "Data/"
-    csv_file = open(f'{folder}/{uid}_turn.csv', 'a', newline='')
+    csv_file = open(f'{folder}/{uid}_inter.csv', 'a', newline='')
     cw = csv.writer(csv_file)
 
     rej = []
@@ -50,8 +50,9 @@ def before_func(uid):
     print(conversation.user_state)
     print(out + '\n')  # 질문 출력
     tts(out)
+
     cw.writerow(['msr', out])
-    # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+#     # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
     # 두번째 질문 수행하기(Position)
     conversation.update()
@@ -565,10 +566,11 @@ def before_func(uid):
 
         if conversation.action == 'Bye':
             result = QA_list_Before.before_final_output(slot)
-            tts(result)
-            # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=result)
+            connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=result)
             print(result)
             conversation.save_text(slot, uid)
             rej_num = len(rej)
             cw.writerow(['msr', result])
-            cw.writerow(['rejection', rej_num])
+            cw.writerow(['Turns', ])
+            cw.writerow(['Rejection', rej_num])
+            cw.writerow(['Misrecognitions', ])
