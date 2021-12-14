@@ -18,6 +18,6 @@ pip3 install google-cloud-speech
 pip3 install ibm-watson
 
 echo "***reboot***"
-reboot
+sudo reboot
 
 exit 0
