@@ -225,7 +225,7 @@ class Dictionary():
                          '발': ['발', '발목', '발등', '발꿈치', '뒷꿈치', '복사뼈', '복숭아뼈', '발가락', '발톱', '아킬레스건', '발바닥']
                          }
 
-        self.YesorNo = {'Yes': ['네', '예', '응', '어', '맞아요', '맞아', '그렇습니다', '맞습니다', '맞어'],
+        self.YesorNo = {'Yes': ['네', '예', '응', '어', '맞아요', '맞아', '그래', '그렇습니다', '맞습니다', '맞어'],
                         'No': ['아니', '아니오', '아니요', '안', '아뇨', '아닌', '아닙니다', '아냐', '아닐', '별로', '글쎄', '그다지', '딱히', '없습니다',
                                '없어', '없네', '없는', '없다', '없고', '없음', '없으예', '없소']}
 
@@ -242,30 +242,3 @@ class Dictionary():
 
         self.severity_number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         self.severity_word = ['영', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구', '십']
-
-#
-# user_in = "뒷목 어깨 허리 종아리 양쪽 그러니까 다리도 아파요 너무 아픈 곳이 많은가요 간호사 선생님?"
-# nlp = NLP()
-# dic = Dictionary()
-# answer = nlp.nlp_position(user_in=user_in, dic=dic)
-# print(answer)
-
-
-# pain_point = nlp.nlp_position(user_in,dic)
-# print("pain_point = {}".format(pain_point))
-#
-#
-#
-#
-#
-# slot_dic = nlp.make_slot(pain_point)
-# print("\n\n")
-# print(slot_dic)
-# slot_dic[0]['R_factor'] = ['숙일 때', '서있을 때']
-# print(slot_dic)
-
-# n += 1
-# df = DataFrame(columns=['ID','Position', 'Quality','R_factor','Severity','Timing'])
-# df['Position'] = points
-#
-# df['ID'] = 1000
