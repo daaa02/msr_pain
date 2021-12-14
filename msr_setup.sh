@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "***update***"
 sudo apt-get update -y
 sudo apt-get upgrade -y
 pip install --upgrade pip
