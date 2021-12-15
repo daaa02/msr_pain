@@ -173,18 +173,34 @@ class NLP():
                 answer = '나쁨'
         return answer
 
+ #   def nlp_severity(self, user_in, dic):
+ #       x = []
+ #       severity = []
+ #       if any(chr.isdigit() for chr in user_in):
+ #           for i in dic.severity_number:
+ #               x = user_in.find(i)
+ #               if x != -1:
+ #                   severity.append(i)
+ #       else:
+ #           for i in range(len(dic.severity_word)):
+ #               if dic.severity_word[i] in user_in:
+ #                   severity.append(i)
+ #       return severity
+
     def nlp_severity(self, user_in, dic):
-        x = []
-        severity = []
-        if any(chr.isdigit() for chr in user_in):
-            for i in dic.severity_number:
-                x = user_in.find(i)
-                if x != -1:
-                    severity.append(i)
-        else:
-            for i in range(len(dic.severity_word)):
-                if dic.severity_word[i] in user_in:
-                    severity.append(i)
+        severity = -1
+        ko = -1
+        nb = -1
+        for i, j in enumerate(dic.severity_word):
+            x = user_in.find(j)
+            if x != -1:
+                ko = i
+                # sleep_time = i
+        for i, j in enumerate(dic.severity_number):  # range(len(
+            x = user_in.find(j)
+            if x != -1:
+                nb = i
+        severity = max(ko, nb)
         return severity
 
     # def make_slot(self, points):   # ID 받는거 추가해야함, 통증 부위 개수에 따라 slot 만드는 함수
