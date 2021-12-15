@@ -267,9 +267,9 @@ def before_func(uid):
             print("severity = {}".format(severity) + '\n')
             print(f'({time.time() - start:.3f}sec)' + '\n')
 
-            if len(severity) != 0:
+            if severity != -1:
                 # severity = max(tmp)
-                conversation.make_slot(slot=slot, action=conversation.action, result=severity)
+                conversation.make_slot(slot=slot, action=conversation.action, result=str(severity))
                 # print("severity = {}".format(severity) + '\n')
                 conversation.update()
 
