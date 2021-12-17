@@ -253,7 +253,7 @@ def before_func(uid):
                 cw.writerow(['msr', out])
                 # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
-        if conversation.action == 'Severity':
+if conversation.action == 'Severity':
             start = time.time()
             user_in = speech_to_text()  # 완료 시 엔터 입력!
             # user_in = input()
@@ -264,13 +264,14 @@ def before_func(uid):
             print("severity = {}".format(severity) + '\n')
             print(f'({time.time() - start:.3f}sec)' + '\n')
 
-            if len(severity) != 0:
+            if severity != -1:
                 # severity = max(tmp)
-                conversation.make_slot(slot=slot, action=conversation.action, result=severity)
+                conversation.make_slot(slot=slot, action=conversation.action, result=str(severity))
                 # print("severity = {}".format(severity) + '\n')
                 conversation.update()
 
-                out = random.choice(QA_list_Before.before_question_list[conversation.action])
+                out = QA_list_Before.fb_severity(slot)
+                out += random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
@@ -287,7 +288,7 @@ def before_func(uid):
                 tts(out)
                 cw.writerow(['msr', out])
                 # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
-
+                
         if conversation.action == 'Timing2':
             start = time.time()
             user_in = speech_to_text()  # 완료 시 엔터 입력!
