@@ -36,7 +36,7 @@ def before_func(uid):
 
     # csv 저장 관련
     folder = "Data/"
-    csv_file = open(f'{folder}/{uid}_basic.csv', 'a', newline='')
+    csv_file = open(f'{folder}/{uid}_basic.csv', 'a', newline='', encoding = 'utf8')
     cw = csv.writer(csv_file)
 
     rej = []
