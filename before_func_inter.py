@@ -51,8 +51,8 @@ def before_func(uid):
     print(out + '\n')  # 질문 출력
     tts(out)
 
-    cw.writerow(['msr', out])
-#     # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
+    # cw.writerow(['msr', out])
+    # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
     # 두번째 질문 수행하기(Position)
     conversation.update()
