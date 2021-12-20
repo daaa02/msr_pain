@@ -269,9 +269,8 @@ def before_func(uid):
                 conversation.make_slot(slot=slot, action=conversation.action, result=str(severity))
                 # print("severity = {}".format(severity) + '\n')
                 conversation.update()
-
-                out = QA_list_Before.fb_severity(slot)
-                out += random.choice(QA_list_Before.before_question_list[conversation.action])
+                
+                out = random.choice(QA_list_Before.before_question_list[conversation.action])
                 print(conversation.action, conversation.action_idx)
                 print(conversation.user_state)
                 print(out + '\n')  # 질문 출력
