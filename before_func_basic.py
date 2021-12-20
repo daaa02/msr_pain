@@ -36,7 +36,7 @@ def before_func(uid):
 
     # csv 저장 관련
     folder = "Data/"
-    csv_file = open(f'{folder}/{uid}_basic.csv', 'a', newline='', encoding = 'utf8')
+    csv_file = open(f'{folder}/{uid}_basic.csv', 'a', newline='', encoding = 'cp949')
     cw = csv.writer(csv_file)
 
     rej = []
@@ -559,8 +559,9 @@ def before_func(uid):
 
         if conversation.action == 'Bye':
             result = QA_list_Before.before_final_output(slot)
-            connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=result)
+            # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=result)
             print(result)
+            tts(result)
             conversation.save_text(slot, uid)
             rej_num = len(rej)
             cw.writerow(['msr', result])
