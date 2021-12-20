@@ -253,7 +253,7 @@ def before_func(uid):
                 cw.writerow(['msr', out])
                 # connect.audio_makeplay(tts=text_to_speech, audio_file_name='tts_out.wav', input_text=out)
 
-if conversation.action == 'Severity':
+        if conversation.action == 'Severity':
             start = time.time()
             user_in = speech_to_text()  # 완료 시 엔터 입력!
             # user_in = input()
