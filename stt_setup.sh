@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "install with pip version==19.2.3"
+echo "!!!!! install with pip version==19.2.3 !!!!!1"
 echo "install with pip version==19.2.3"
 echo "install with pip version==19.2.3"
 echo "install with pip version==19.2.3"
