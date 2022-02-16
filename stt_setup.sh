@@ -16,6 +16,7 @@ source venv/bin/activate
 echo "***INSTALL GOOGLE SPEECH-TO-TEXT***"
 sudo apt-get install portaudio19-dev libffi-dev libssl-dev
 pip3 install pyaudio
+pip install grpcio==1.40.0
 sudo pip3 install -U grpcio --no-binary=grpcio
 sudo pip3 install -U grpcio-tools --no-binary=grpcio-tools
 
