@@ -16,6 +16,11 @@ source venv/bin/activate
 echo "***INSTALL GOOGLE SPEECH-TO-TEXT***"
 sudo apt-get install portaudio19-dev libffi-dev libssl-dev
 pip3 install pyaudio
+sudo pip3 install -U grpcio --no-binary=grpcio
+sudo pip3 install -U grpcio-tools --no-binary=grpcio-tools
+
+sudo pip3 install --upgrade google-api-python-client
+sudo pip3 install google-cloud-speech
 pip3 install --upgrade google-cloud-storage
 pip3 install --upgrade google-cloud-speech
 
