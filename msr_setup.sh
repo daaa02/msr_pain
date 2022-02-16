@@ -7,6 +7,7 @@ pip install --upgrade pip
 
 echo "***install python library***"
 pip3 install wheel
+pip3 install numpy
 pip3 install pandas
 sudo apt-get install portaudio19-dev
 pip3 install pyaudio
