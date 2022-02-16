@@ -47,6 +47,6 @@ tar -zxvf google-cloud-sdk-369.0.0-linux-x86.tar.gz
 gcloud init
 
 echo "***REBOOT & NEED TO START NEW SHELL***"
-sudo reboot
+sudo reboot now
 
 exit 0
