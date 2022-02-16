@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "***UPDATE***"
-sudo apt-get update -y
+sudo apt-get update -y 
 sudo apt-get upgrade -y
 
 echo "***INSTALL VENV***"
