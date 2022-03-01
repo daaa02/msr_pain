@@ -25,11 +25,11 @@ pip install grpcio==1.40.0
 sudo pip3 install -U grpcio --no-binary=grpcio
 sudo pip3 install -U grpcio-tools --no-binary=grpcio-tools
 
-sudo apt-get install default-jdk
+sudo apt-get install default-jdk -y
 pip3 install konlpy
 
-sudo apt-get install python3-sdl2
-sudo apt-get install portaudio19-dev libffi-dev libssl-dev
+sudo apt-get install python3-sdl2 -y
+sudo apt-get install portaudio19-dev libffi-dev libssl-dev -y
 pip3 install pyaudio
 pip3 install pygame
 sudo apt-get install omxplayer
