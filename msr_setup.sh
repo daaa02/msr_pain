@@ -42,6 +42,8 @@ sudo pip3 install --upgrade google-api-python-client
 pip3 install --upgrade google-cloud-storage
 pip3 install --upgrade google-cloud-speech
 
+echo "export GOOGLE_APPLICATION_CREDENTIALS='KEY/PATH.json'"
+
 curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-369.0.0-linux-x86.tar.gz
 tar -zxvf google-cloud-sdk-369.0.0-linux-x86.tar.gz
 ./google-cloud-sdk/install.sh
